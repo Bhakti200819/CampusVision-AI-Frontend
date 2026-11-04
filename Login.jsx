@@ -28,41 +28,68 @@ function Login() {
     setLoading(true);
 
     try {
-     const response = await fetch("https://campusvision-ai-backend.onrender.com/auth/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          email,
-          password
-        })
-      });
+      const response = await fetch(
+        "https://campusvision-ai-backend.onrender.com/auth/login",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+          },
+          body: JSON.stringify({
+            email: email.trim(),
+            password
+          })
+        }
+      );
 
       const data = await response.json();
 
       if (!response.ok) {
-        throw new Error(data.detail || "Login failed");
+        throw new Error(
+          data.detail || data.message || "Invalid email or password"
+        );
       }
 
-      // Save JWT access token
-localStorage.setItem("campusvision_token", data.access_token);
+      if (!data.access_token) {
+        throw new Error("Authentication token not received");
+      }
 
-// Save user details
-localStorage.setItem(
-  "campusvision_user",
-  JSON.stringify({
-    user_id: data.user_id,
-    full_name: data.full_name,
-    email: data.email,
-    role: data.role
-  })
-);
+      // Save authentication token
+      localStorage.setItem(
+        "campusvision_token",
+        data.access_token
+      );
 
-navigate("/portal");
+      // Save logged-in user details
+      localStorage.setItem(
+        "campusvision_user",
+        JSON.stringify({
+          user_id: data.user_id,
+          full_name: data.full_name,
+          email: data.email,
+          role: data.role
+        })
+      );
+
+      // Role-based navigation
+      if (data.role === "teacher") {
+        navigate("/portal");
+      } else if (
+        data.role === "admin" ||
+        data.role === "principal"
+      ) {
+        navigate("/portal");
+      } else {
+        throw new Error("Unauthorized user role");
+      }
 
     } catch (err) {
-      setError(err.message || "Unable to connect to server");
+      if (err instanceof TypeError) {
+        setError("Unable to connect to server. Please try again.");
+      } else {
+        setError(err.message || "Login failed");
+      }
     } finally {
       setLoading(false);
     }
@@ -164,7 +191,10 @@ navigate("/portal");
                 Remember me
               </label>
 
-              <Link to="/forgot-password" className="cv-forgot-link">
+              <Link
+                to="/forgot-password"
+                className="cv-forgot-link"
+              >
                 Forgot password?
               </Link>
             </div>
