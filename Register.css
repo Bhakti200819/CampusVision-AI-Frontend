@@ -1,0 +1,150 @@
+
+/* ===== CAMPUSVISION AI REGISTER PAGE ===== */
+
+.cv-register-page {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 45px 20px;
+  background:
+    radial-gradient(circle at 15% 20%, rgba(0, 190, 255, 0.13), transparent 35%),
+    radial-gradient(circle at 85% 80%, rgba(0, 100, 255, 0.12), transparent 35%),
+    #060d1b;
+  color: #f4f8ff;
+  font-family: Inter, Arial, sans-serif;
+}
+
+.cv-register-card {
+  width: 100%;
+  max-width: 470px;
+  padding: 38px;
+  border: 1px solid rgba(0, 211, 255, 0.22);
+  border-radius: 20px;
+  background: rgba(12, 25, 46, 0.94);
+  box-shadow: 0 20px 70px rgba(0, 0, 0, 0.4);
+}
+
+.cv-register-icon {
+  width: 55px;
+  height: 55px;
+  display: grid;
+  place-items: center;
+  color: #00d9ff;
+  background: rgba(0, 217, 255, 0.1);
+  border: 1px solid rgba(0, 217, 255, 0.25);
+  border-radius: 15px;
+  margin-bottom: 22px;
+}
+
+.cv-register-card h1 {
+  font-size: 28px;
+  margin: 0 0 9px;
+  color: #fff;
+}
+
+.cv-register-subtitle {
+  color: #91a5bd;
+  font-size: 14px;
+  margin-bottom: 28px;
+}
+
+.cv-register-card form {
+  display: flex;
+  flex-direction: column;
+}
+
+.cv-register-card label {
+  color: #cbd8e8;
+  font-size: 13px;
+  margin: 15px 0 8px;
+}
+
+.cv-register-card input,
+.cv-register-card select {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 13px 14px;
+  border-radius: 9px;
+  border: 1px solid rgba(148, 174, 204, 0.2);
+  background: #091426;
+  color: #fff;
+  outline: none;
+  font-size: 14px;
+  transition: 0.25s;
+}
+
+.cv-register-card input::placeholder {
+  color: #657a94;
+}
+
+.cv-register-card input:focus,
+.cv-register-card select:focus {
+  border-color: #00d9ff;
+  box-shadow: 0 0 0 3px rgba(0, 217, 255, 0.09);
+}
+
+.cv-register-card select {
+  cursor: pointer;
+}
+
+.cv-register-card form button {
+  margin-top: 27px;
+  padding: 14px;
+  border: none;
+  border-radius: 9px;
+  background: linear-gradient(100deg, #00bfe8, #0879ed);
+  color: #fff;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+.cv-register-card form button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 190, 255, 0.25);
+}
+
+.cv-register-login {
+  text-align: center;
+  margin-top: 24px;
+  color: #91a5bd;
+  font-size: 13px;
+}
+
+.cv-register-login a {
+  color: #00d9ff;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.cv-register-security {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-top: 25px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  color: #8198b2;
+  font-size: 12px;
+}
+
+.cv-register-security svg {
+  color: #00d9ff;
+}
+
+@media (max-width: 520px) {
+  .cv-register-page {
+    padding: 25px 14px;
+  }
+
+  .cv-register-card {
+    padding: 26px 21px;
+  }
+
+  .cv-register-card h1 {
+    font-size: 24px;
+  }
+}
