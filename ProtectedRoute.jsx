@@ -16,7 +16,7 @@ function ProtectedRoute() {
 
       try {
         const response = await fetch(
-          "http://127.0.0.1:8000/auth/me",
+          "https://campusvision-ai-backend.onrender.com/auth/me",
           {
             method: "GET",
             headers: {
