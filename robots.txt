@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://bhakti200819.github.io/CampusVision-AI-Frontend/sitemap.xml
