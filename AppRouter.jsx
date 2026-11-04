@@ -1,5 +1,5 @@
 
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HashRouter, Routes, Route } from "react-router-dom";
 
 import Home from "./Home.jsx";
 import Login from "./Login.jsx";
@@ -10,7 +10,7 @@ import CommandCenter from "./CommandCenter.jsx";
 
 function AppRouter() {
   return (
-    <BrowserRouter basename="/CampusVision-AI-Frontend">
+    <HashRouter>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
@@ -20,7 +20,7 @@ function AppRouter() {
           <Route path="/portal" element={<CommandCenter />} />
         </Route>
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 
