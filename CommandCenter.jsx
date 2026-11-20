@@ -12,7 +12,7 @@ import {
   YAxis,
   Tooltip,
 } from "recharts";
-const API_BASE_URL = "http://127.0.0.1:8000";
+const API_BASE_URL = "https://campusvision-ai-backend.onrender.com";
 
 const getAuthToken = () => {
   try {
@@ -738,7 +738,7 @@ const runAIDetection = async (cameraId) => {
     formData.append("file", blob, "webcam_frame.jpg");
 
     const response = await fetch(
-  "http://127.0.0.1:8000/mobile/detect",
+`${API_BASE_URL}/mobile/detect`,
   {
     method: "POST",
     headers: getAuthHeaders(),
